@@ -1,5 +1,6 @@
 import { NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 interface User {
   profilePicture: string;
@@ -12,11 +13,13 @@ interface User {
 
 @Component({
   selector: 'app-users',
-  imports: [NgStyle],
+  imports: [NgStyle, FormsModule],
   templateUrl: './users.html',
   styleUrl: './users.scss',
 })
 export class Users {
+  inputValue: string = '';
+
   users: User[] = [
     {
       profilePicture: 'https://api.dicebear.com/7.x/avataaars/svg?seed=alex',

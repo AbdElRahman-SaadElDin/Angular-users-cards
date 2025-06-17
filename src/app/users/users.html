@@ -1,15 +1,21 @@
 <div class="users-header">
   <h2>Users</h2>
-  <form class="search-form">
-    <input type="text" placeholder="email" />
+  <form class="search-form" (submit)="$event.preventDefault()">
+    <input
+      type="text"
+      placeholder="email"
+      [(ngModel)]="inputValue"
+      name="inputValue"
+    />
     <button type="submit">Search</button>
   </form>
 </div>
 <section>
-  @for(user of users;track user){
+  @for(user of users;track user){ @if
+  (user.email.toLowerCase().includes(inputValue)) {
   <article>
     <figure>
-      <img src="{{user.profilePicture}}" alt="" />
+      <img src="{{user.profilePicture}}" alt="profile" />
     </figure>
     <h3 [ngStyle]="{'background': getRoleColor(user.role)}">{{user.role}}</h3>
     <ul>
@@ -19,5 +25,5 @@
       <li>Birthdate: {{user.birthdate}}</li>
     </ul>
   </article>
-  }
+  }}
 </section>
