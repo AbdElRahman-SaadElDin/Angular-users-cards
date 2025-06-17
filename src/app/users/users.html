@@ -1,0 +1,23 @@
+<div class="users-header">
+  <h2>Users</h2>
+  <form class="search-form">
+    <input type="text" placeholder="email" />
+    <button type="submit">Search</button>
+  </form>
+</div>
+<section>
+  @for(user of users;track user){
+  <article>
+    <figure>
+      <img src="{{user.profilePicture}}" alt="" />
+    </figure>
+    <h3 [ngStyle]="{'background': getRoleColor(user.role)}">{{user.role}}</h3>
+    <ul>
+      <li><h4>Username: {{user.username}}</h4></li>
+      <li>Phone number: {{user.phone}}</li>
+      <li>Email: {{user.email}}</li>
+      <li>Birthdate: {{user.birthdate}}</li>
+    </ul>
+  </article>
+  }
+</section>
